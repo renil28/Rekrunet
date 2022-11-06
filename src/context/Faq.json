@@ -1,0 +1,27 @@
+[
+    {
+     "id": 1,
+     "question": "What are the services we offer at Rekrunet?",
+     "answer": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates corporis vitae tempora quod provident tenetur culpa dolore facere? Earum, dolor?"
+    },
+    {
+     "id": 2,
+     "question": "What are the type of tests we provide at Rekrunet?",
+     "answer": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto iusto veniam eveniet labore impedit nam"
+    },
+    {
+     "id": 3,
+     "question": "Is Rekrunet beginners friendly?",
+     "answer": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores,"
+    },
+    {
+     "id": 4,
+     "question": "Does Rekrunet provide pricing to use their application?",
+     "answer": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi."
+    },
+    {
+     "id": 5,
+     "question": "How to set up or attend tests in Rekrunet?",
+     "answer": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium, sed. Dolores, sequi."
+    }
+   ]
