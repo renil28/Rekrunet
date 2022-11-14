@@ -1259,6 +1259,11 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@faker-js/faker@^7.6.0":
+  "integrity" "sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw=="
+  "resolved" "https://registry.npmjs.org/@faker-js/faker/-/faker-7.6.0.tgz"
+  "version" "7.6.0"
+
 "@firebase/analytics-compat@0.1.17":
   "integrity" "sha512-36ByEDsH6/3YNuD6yig30s2A/+E1pt333r8SJirUE8+aHYl/DGX0PXplKvJWDGamYYjMwet3Kt4XRrB1NY8mLg=="
   "resolved" "https://registry.npmjs.org/@firebase/analytics-compat/-/analytics-compat-0.1.17.tgz"
@@ -6599,6 +6604,11 @@
   dependencies:
     "language-subtag-registry" "~0.3.2"
 
+"lazy@latest":
+  "integrity" "sha512-Y+CjUfLmIpoUCCRl0ub4smrYtGGr5AOa2AKOaWelGHOGz33X/Y/KizefGqbkwfz44+cnq/+9habclf8vOmu2LA=="
+  "resolved" "https://registry.npmjs.org/lazy/-/lazy-1.0.11.tgz"
+  "version" "1.0.11"
+
 "leven@^3.1.0":
   "integrity" "sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A=="
   "resolved" "https://registry.npmjs.org/leven/-/leven-3.1.0.tgz"
@@ -8031,6 +8041,13 @@
   dependencies:
     "performance-now" "^2.1.0"
 
+"random@^3.0.6":
+  "integrity" "sha512-B53pp/8eFBxULg6sfQgjjmy3vZ2CWVt0Nk4OgkSpvmAf3VXfcEUgGASbNWbXiTiExWe8hCIf5HlddNHzrte9jg=="
+  "resolved" "https://registry.npmjs.org/random/-/random-3.0.6.tgz"
+  "version" "3.0.6"
+  dependencies:
+    "seedrandom" "^3.0.5"
+
 "randombytes@^2.1.0":
   "integrity" "sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ=="
   "resolved" "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz"
@@ -9403,6 +9420,11 @@
     "has-symbols" "^1.0.2"
     "which-boxed-primitive" "^1.0.2"
 
+"underscore@latest":
+  "integrity" "sha512-+A5Sja4HP1M08MaXya7p5LvjuM7K6q/2EaC0+iovj/wOcMsTzMvDFbasi/oSapiwOlt252IqsKqPjCl7huKS0A=="
+  "resolved" "https://registry.npmjs.org/underscore/-/underscore-1.13.6.tgz"
+  "version" "1.13.6"
+
 "unicode-canonical-property-names-ecmascript@^2.0.0":
   "integrity" "sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ=="
   "resolved" "https://registry.npmjs.org/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-2.0.0.tgz"
@@ -9766,6 +9788,14 @@
   "integrity" "sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ=="
   "resolved" "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
   "version" "1.2.3"
+
+"words@^0.1.4":
+  "integrity" "sha512-zJjWLQRfduYRL7UNmbI6Ef7wQ3wTEA2UW+/6Y9x17SaQHJVIKffd45L1BLKThSIftpPR14n54g98wxU085zK0w=="
+  "resolved" "https://registry.npmjs.org/words/-/words-0.1.4.tgz"
+  "version" "0.1.4"
+  dependencies:
+    "lazy" "latest"
+    "underscore" "latest"
 
 "workbox-background-sync@6.5.3":
   "integrity" "sha512-0DD/V05FAcek6tWv9XYj2w5T/plxhDSpclIcAGjA/b7t/6PdaRkQ7ZgtAX6Q/L7kV7wZ8uYRJUoH11VjNipMZw=="

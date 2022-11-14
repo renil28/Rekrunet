@@ -2,7 +2,7 @@ import MultiActionAreaCard from "../components/MultiActionAreaCard"
 
 const AIQATool = () => {
     return (
-      <div className='home'>
+      <div className='home2'>
         <div className="">
           <MultiActionAreaCard></MultiActionAreaCard>
         </div>

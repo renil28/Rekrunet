@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "firebase": "^9.13.0",
     "i": "^0.3.7",
+    "random": "^3.0.6",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-loader-spinner": "^5.3.4",
@@ -20,7 +21,8 @@
     "react-scripts": "5.0.1",
     "sass": "^1.54.8",
     "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "words": "^0.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0"
   }
 }
