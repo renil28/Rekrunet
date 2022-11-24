@@ -2,7 +2,6 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +20,42 @@ export default function Test() {
       };
     
       const questions = [
+        {
+            questionText: 'What is the capital of France?',
+            answerOptions: [
+                { answerText: 'New York', isCorrect: false },
+                { answerText: 'London', isCorrect: false },
+                { answerText: 'Paris', isCorrect: true },
+                { answerText: 'Dublin', isCorrect: false },
+            ],
+        },
+        {
+            questionText: 'Who is CEO of Tesla?',
+            answerOptions: [
+                { answerText: 'Jeff Bezos', isCorrect: false },
+                { answerText: 'Elon Musk', isCorrect: true },
+                { answerText: 'Bill Gates', isCorrect: false },
+                { answerText: 'Tony Stark', isCorrect: false },
+            ],
+        },
+        {
+            questionText: 'The iPhone was created by which company?',
+            answerOptions: [
+                { answerText: 'Apple', isCorrect: true },
+                { answerText: 'Intel', isCorrect: false },
+                { answerText: 'Amazon', isCorrect: false },
+                { answerText: 'Microsoft', isCorrect: false },
+            ],
+        },
+        {
+            questionText: 'How many Harry Potter books are there?',
+            answerOptions: [
+                { answerText: '1', isCorrect: false },
+                { answerText: '4', isCorrect: false },
+                { answerText: '6', isCorrect: false },
+                { answerText: '7', isCorrect: true },
+            ],
+        },
         {
             questionText: 'What is the capital of France?',
             answerOptions: [
@@ -102,8 +137,11 @@ export default function Test() {
         )}
       </CardContent>
       <CardActions>
-      <button style={{
+      <button id='tbutton' style={{
         border:'none',
+        transition: 'all 0.3s ease 0s',
+        cursor: 'pointer',
+        outline: 'none',
         padding:'15px 15px',
         textAlign:'center',
         marginLeft:'250px',

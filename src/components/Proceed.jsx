@@ -40,7 +40,7 @@ const Proceed = () => {
         <Button size="small"  
         style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
         variant="contained"
-        onClick={()=> window.open('/testpage/test', 'TestPage', 'width=1920,height=1080,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,copyhistory=no')}
+        onClick={()=> (window.open('/testpage/test', 'TestPage', 'width=1920,height=1080,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,copyhistory=no'), window.close())}
         >Proceed</Button>
       </CardActions>
     </Card>
