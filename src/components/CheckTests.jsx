@@ -20,9 +20,9 @@ import {signOut} from "firebase/auth"
 import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthContext'
 import { Avatar } from '@mui/material';
-import Tests from "../img/tests.png"
-import Resume from "../img/resume.png"
-import Notifications from "../img/notifications.png"
+import UiUx from '../img/uiux.jpg'
+import Software from '../img/softwaredeveloper.png'
+import Analyst from '../img/dataanalyst.jpg'
 
 function Copyright() {
   return (
@@ -41,7 +41,7 @@ const cards = [1, 2, 3];
 
 const theme = createTheme();
 
-export default function Dashboard() {
+export default function CheckTests() {
     const {currentUser} = useContext(AuthContext)
   return (
     <ThemeProvider theme={theme}>
@@ -72,9 +72,8 @@ export default function Dashboard() {
             height="250"
             image= {Logo}
            />
-            <Typography variant="h6" align="center" color="text.secondary" paragraph>
-            Welcome to Rekrunet, an AI Recruitement System Made for the passionate, talented job professionals. We have 
-            various tools such as MCQ AI Tool and Sentiment Analysis to speed up the Recruitement Process.
+            <Typography variant="h3" align="center" color="text.secondary" paragraph>
+            Check For Tests
             </Typography>
             <Stack
               sx={{ pt: 4 }}
@@ -82,8 +81,8 @@ export default function Dashboard() {
               spacing={2}
               justifyContent="center"
             >
-              <Button variant="contained" style={{backgroundColor: '#7b96ec'}}>Get Started</Button>
-              <Button variant="outlined"  onClick={()=> (window.open('/aitool'))}>MCQ AI Tool</Button>
+              <Button variant="contained" style={{backgroundColor: '#7b96ec'}}>Attend Test</Button>
+              <Button variant="outlined"  href='/'>Home</Button>
             </Stack>
           </Container>
         </Box>
@@ -96,24 +95,24 @@ export default function Dashboard() {
                 >
                      <CardMedia
                         component="img"
-                        alt="rekrunet tests"
+                        alt="rekrunet software developer"
                         height="250"
-                        image= {Tests}
+                        image= {Software}
                     />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Check For Tests
+                      Software Developer
                     </Typography>
                     <Typography>
-                    Check for Recruitement Tests put out by the company based on the jobs you prefer.
+                    The MCQ Test will be based on programming languages like C, C++
                     </Typography>
                   </CardContent>
                   <CardActions>
                   <Button size="small"  
                     style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
                      variant="contained"
-                     href="/checktests"
-                    >Check Tests</Button>
+                     href="/testpage"
+                    >Attend Test</Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -123,24 +122,25 @@ export default function Dashboard() {
                 >
                     <CardMedia
                         component="img"
-                        alt="rekrunet resume "
+                        alt="rekrunet uiux "
                         height="250"
-                        image= {Resume}
+                        image= {UiUx}
                     />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Update Resume
+                      UI/UX Designer
                     </Typography>
                     <Typography>
-                    Update your resume and job preferences.
+                    The MCQ Test will be based on User Interface Components and CSS
                     </Typography>
                   </CardContent>
                   <CardActions>
-                  <Button size="small"  
+                  <Button size="small" 
+                    disabled 
                     style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
                      variant="contained"
-                     href="/resume"
-                    >Update Resume</Button>
+                     onClick={()=> (window.open('/login'), window.close())}
+                    >Attend Test</Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -150,25 +150,26 @@ export default function Dashboard() {
                 >
                      <CardMedia
                         component="img"
-                        alt="rekrunet tests"
+                        alt="rekrunet analyst"
                         height="250"
-                        image= {Notifications}
+                        image= {Analyst}
                     />
                  
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                     Check Notifications
+                     Data Analyst
                     </Typography>
                     <Typography>
-                    Check the results based on your tests. Hope you get the job!
+                    The MCQ Test will be based on data information and SQL Queries
                     </Typography>
                   </CardContent>
                   <CardActions>
                   <Button size="small"  
+                  disabled
                     style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
                      variant="contained"
-                     href = "/notifications"
-                    >Check Notifications</Button>
+                     onClick={()=> (window.open('/login'), window.close())}
+                    >Attend Test</Button>
                   </CardActions>
                 </Card>
                 

@@ -12,7 +12,10 @@ import TabSec from "./components/Tab";
 import Proceed from "./components/Proceed";
 import Test from "./components/Test";
 import EditQuestions from "./components/EditQuestions";
-import Album from "./components/Dashboard";
+import Dashboard from "./components/Dashboard";
+import CheckTests from "./components/CheckTests";
+import Notifications from "./components/Notifications";
+
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -42,7 +45,9 @@ function App() {
           <Route path="aitool" element={<AIQATool/>} />
           <Route path="help" element = {<Help/>}/>
           <Route path="questions" element = {<EditQuestions/>}/>
-          <Route path="album" element = {<Album/>}/>
+          <Route path="checktests" element = {<CheckTests/>}/>
+          <Route path="notifications" element={<Notifications/>}/>
+          <Route path="dashboard" element = {<Dashboard/>}/>
           <Route path="testpage" element={<TabSec/>}>
             <Route path="proceed" element={<Proceed />} />
             <Route path="test" element={<Test/>} />
