@@ -37,8 +37,6 @@ function Copyright() {
   );
 }
 
-const cards = [1, 2, 3];
-
 const theme = createTheme();
 
 export default function CheckTests() {

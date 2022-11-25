@@ -20,9 +20,6 @@ import {signOut} from "firebase/auth"
 import { auth } from '../firebase'
 import { AuthContext } from '../context/AuthContext'
 import { Avatar } from '@mui/material';
-import UiUx from '../img/uiux.jpg'
-import Software from '../img/softwaredeveloper.png'
-import Analyst from '../img/dataanalyst.jpg'
 
 function Copyright() {
   return (
@@ -90,25 +87,43 @@ export default function Notifications() {
           <Grid container spacing={0}>
               <Grid xs={12} sm={1} md={15}>
                 <Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+                  sx={{ height: '100%', backgroundColor: '#7ba7d4', display: 'flex', flexDirection: 'column' }}
                 >
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
                       Software Developer
+                      <Button size="small"  
+                        disabled
+                        style={{ marginLeft:'12px', backgroundColor: '#FFA500', color:'#000000'}}
+                        variant="outlined"
+                    >In Progress</Button>
                     </Typography>
                     <Typography>
                      The results are yet to be compiled, please wait.
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                  <Button size="small"  
-                    disabled
-                    style={{margin: '0 auto', display: "flex", backgroundColor: '#FFA500', color:'#000000'}}
-                     variant="outlined"
-                    >In Progress</Button>
-                  </CardActions>
                 </Card>
-              </Grid>   
+              </Grid> 
+              <br></br>
+              <Grid xs={12} sm={1} md={15}>
+                <Card
+                  sx={{ height: '100%', backgroundColor: '#7ba7d4', display: 'flex', flexDirection: 'column' }}
+                >
+                  <CardContent sx={{ flexGrow: 1 }}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      UI/UX Developer
+                      <Button size="small"  
+                        disabled
+                        style={{ marginLeft:'12px', backgroundColor: '#FF0000', color:'#000000'}}
+                        variant="outlined"
+                    >Not Selected</Button>
+                    </Typography>
+                    <Typography>
+                     The Candidate is not selected due to test performance.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>     
           </Grid>
         </Container>
       </main>

@@ -64,13 +64,13 @@ const Register = () => {
       <img src={Logo} alt="" width="200" height="180" />
         <span className="title">Register</span>
         <form onSubmit={handleSubmit}>
-          <input required type="text" placeholder="Full Name" />
-          <input required type="email" placeholder="Email" />
-          <input required type="password" placeholder="Password" />
+          <input required type="text" placeholder="Full Name - required" />
+          <input required type="email" placeholder="Email - required" />
+          <input required type="password" placeholder="Password - required" />
           <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
-            <span>Upload your Passport Size Picture</span>
+            <span>Upload your Passport Size Picture - required</span>
           </label>
           <button disabled={loading}>Register</button>
           {loading && "Registration Successful. Redirecting to Home Page"}
