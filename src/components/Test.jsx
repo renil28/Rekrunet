@@ -16,7 +16,7 @@ export default function Test() {
       const navigate = useNavigate();
       const handleSubmit = (e) => {
         e.preventDefault();
-        navigate("/testpage/hr");
+        navigate("/testpage/apt");
       };
     
       const questions = [

@@ -8,6 +8,7 @@ import Test from "./Test";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import Sent from "../pages/Sentiment";
 import Timer from "./Timer";
+import HR from "../pages/HR";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,7 +48,7 @@ const TabSec = () => {
   const navigate = useNavigate();
   const [value, setValue] = React.useState(0);
 
-  const paths = useMemo(() => ["/testpage/proceed", "/testpage/test", "/testpage/hr"], []);
+  const paths = useMemo(() => ["/testpage/proceed", "/testpage/test", "/testpage/apt","/testpage/hr"], []);
 
   useEffect(() => {
     const value = paths.indexOf(pathname);
@@ -65,7 +66,7 @@ const TabSec = () => {
         <Tabs
           value={value}
           onChange={handleChange}
-          aria-label="basic tabs example"
+          aria-label="Test tabs"
           centered
         >
           <Tab
@@ -83,9 +84,16 @@ const TabSec = () => {
             to={`/testpage/test`}
           />
           <Tab
-            label="HR Round"
+            label="Managerial Round"
             disabled
             {...a11yProps(2)}
+            component={Link}
+            to={`/testpage/apt`}
+          />
+          <Tab
+            label="HR Round"
+            disabled
+            {...a11yProps(3)}
             component={Link}
             to={`/testpage/hr`}
           />
@@ -101,6 +109,9 @@ const TabSec = () => {
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Sent/>
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <HR/>
       </TabPanel>
     </div>
   );

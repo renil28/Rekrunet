@@ -12,6 +12,23 @@ import Logo from "../img/logo.png";
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { faker } from '@faker-js/faker';
+import fetch from "node-fetch";
+
+
+//Generation of Questions
+async function query(data) {
+  const response = await fetch(
+      "https://api-inference.huggingface.co/models/mrm8488/t5-base-finetuned-question-generation-ap",
+      {
+          headers: { Authorization: `Bearer ${'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'}` },
+          method: "POST",
+          body: JSON.stringify(data),
+      }
+  );
+  const result = await response.json();
+  return result;
+}
+
 
 
 export default function MultiActionAreaCard() {
@@ -22,8 +39,7 @@ export default function MultiActionAreaCard() {
   const [model, setModel] = useState(null); 
 
   const [textValue, setTextValue] = useState('');
-
- 
+  
 
     //single random incorrect answers generator
     function randomProfile() {
@@ -67,6 +83,38 @@ export default function MultiActionAreaCard() {
       setAnswer(answers); 
       console.log(answers)
 
+      //Generate Questions Based on the Passage
+      query(`answer: ${passage}`).then((response) => {
+        console.log(JSON.stringify(response));
+        let x = JSON.stringify(response);
+        document.getElementById('myId11').innerHTML = x.slice(34);
+        document.getElementById('myId').innerHTML = JSON.stringify(response);
+      });
+      query(`answer: ${passage.slice(20)}`).then((response) => {
+        console.log(JSON.stringify(response));
+        let x = JSON.stringify(response);
+        document.getElementById('myId12').innerHTML = x.slice(34);
+        document.getElementById('myId2').innerHTML = JSON.stringify(response);
+      });
+      query(`answer: ${passage.slice(40)}`).then((response) => {
+        console.log(JSON.stringify(response));
+        let x = JSON.stringify(response);
+        document.getElementById('myId13').innerHTML = x.slice(34);
+        document.getElementById('myId3').innerHTML = JSON.stringify(response);
+      });
+      query(`answer: ${passage.slice(60)}`).then((response) => {
+        console.log(JSON.stringify(response));
+        let x = JSON.stringify(response);
+        document.getElementById('myId14').innerHTML = x.slice(34);
+        document.getElementById('myId4').innerHTML = JSON.stringify(response);
+      });
+      query(`answer: ${passage.slice(80)}`).then((response) => {
+        console.log(JSON.stringify(response));
+        let x = JSON.stringify(response);
+        document.getElementById('myId15').innerHTML = x.slice(34);
+        document.getElementById('myId5').innerHTML = JSON.stringify(response);
+      });
+
     }  
   }
 
@@ -84,7 +132,7 @@ export default function MultiActionAreaCard() {
            />
            <Typography gutterBottom variant='h5' align='center'> Artificial Intelligence Assisted Q/A Tool</Typography>
           <Typography gutterBottom variant="h5" component="div">
-           <h6>Type your Question Here and Enter to Generate Answers</h6>
+           <h6>Type your Question Here and Enter to Generate Answers/Questions</h6>
           <input ref={questionRef} onKeyPress={answerQuestion} size="80"></input>
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -97,6 +145,14 @@ export default function MultiActionAreaCard() {
           </Typography>
           <br></br>
           <Typography variant="body2" color="text.secondary">
+            <h4>Generated Questions:</h4>
+            <div id="myId"></div>
+            <div id="myId2"></div>
+            <div id="myId3"></div>
+            <div id="myId4"></div>
+            <div id="myId5"></div><br></br>
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
             <h4>Generated Incorrect Answers:</h4>
             <b>Incorrect Answer 1 (Technical Terms) -</b> {users_group[Math.floor(Math.random()*users_group.length)].names}<br></br>
             <b>Incorrect Answer 2 (Names) -</b> {users_group[Math.floor(Math.random()*users_group.length)].fullnames}<br></br>
@@ -108,12 +164,11 @@ export default function MultiActionAreaCard() {
           <br></br>
           <Typography variant="body2" color="text.secondary">
             <h4>Generated Incorrect Phrases:</h4>
-            <b>Incorrect Answer 1 -</b> It can {users_group[Math.floor(Math.random()*users_group.length)].phrase}<br></br>
-            <b>Incorrect Answer 2 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} can {users_group[Math.floor(Math.random()*users_group.length)].phrase}<br></br>
-            <b>Incorrect Answer 3 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} helps to {users_group[Math.floor(Math.random()*users_group.length)].phrase}<br></br>
-            <b>Incorrect Answer 4 -</b> It helps to {users_group[Math.floor(Math.random()*users_group.length)].phrase}<br></br>
-            <b>Incorrect Answer 5 -</b> It can be said to {users_group[Math.floor(Math.random()*users_group.length)].phrase}<br></br>
-            <b>Incorrect Answer 6 -</b> It is a {users_group[Math.floor(Math.random()*users_group.length)].names}<br></br>
+            <b>Incorrect Answer 1 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} <div id="myId11" style={{display: 'inline-block'}} ></div><br></br>
+            <b>Incorrect Answer 2 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} <div id="myId12" style={{display: 'inline-block'}}></div><br></br>
+            <b>Incorrect Answer 3 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} <div id="myId13" style={{display: 'inline-block'}}></div><br></br>
+            <b>Incorrect Answer 4 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} <div id="myId14" style={{display: 'inline-block'}}></div><br></br>
+            <b>Incorrect Answer 5 -</b> {users_group[Math.floor(Math.random()*users_group.length)].terms} <div id="myId15" style={{display: 'inline-block'}}></div><br></br>
           </Typography>
         </CardContent>
       </CardActionArea>

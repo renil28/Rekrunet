@@ -4,19 +4,10 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import Sentiment from 'sentiment';
-import Timer2 from '../components/AptTimer';
-import { useNavigate } from 'react-router-dom';
 
 const sentiment = new Sentiment();
 
-export default function Sent() {
-
-  const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate("/testpage/hr");
-  };
-  
+export default function HR() {
     const [phrase, setPhrase] = useState('');
     const [phrase2, setPhrase2] = useState('');
     const [phrase3, setPhrase3] = useState('');
@@ -36,18 +27,13 @@ export default function Sent() {
 
   return (
     <Card sx={{ maxWidth: 550,  marginLeft:59}}>
-      <Timer2></Timer2>
       <Typography align='center'>
-        <h5>Managerial Round - Please answer these questions in 5 minutes</h5>
+        <h5>HR Round - Please answer these questions</h5>
       </Typography>
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h7" component="div">
-          <i>(Problem) I had to work with another programmer who complained a lot about our projects. 
-            The programmer hates me so much and doesn't contribute much to the project. 
-          </i>
-          <br></br>
-           How will you, as a coworker, will deal in such situations?
+          Can you please tell us about yourself and why do you want this job?
           </Typography>
           <Typography variant="body2" color="text.secondary">
           <textarea value={phrase} onChange={e => setPhrase(e.target.value)}
@@ -59,12 +45,7 @@ export default function Sent() {
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h7" component="div">
-          <i>(Problem) There are situations where the manager of your team constantly belittles you
-            and makes you feel insecure of your work. The manager shows partiality and prefers other co-workers for 
-            exciting projects. You never get a chance to showcase your skills, even though you work hard and complete projects on time.
-          </i>
-          <br></br>
-           How will you, as a coworker, will draft a complaint to the HR or the higher authorities of the organisation?
+          What experience do you have that would be relevant to this role? (Mention projects, internships etc.)
           </Typography>
           <Typography variant="body2" color="text.secondary">
           <textarea value={phrase2} onChange={e => setPhrase2(e.target.value)}
@@ -76,47 +57,21 @@ export default function Sent() {
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="h7" component="div">
-           Describe a situation where you performed something unethical at college/workplace, even though it seemed as the right
-           thing to do. 
+          What are your salary expectations and what environment are you expecting from the company?
           </Typography>
           <Typography variant="body2" color="text.secondary">
           <textarea value={phrase3} onChange={e => setPhrase3(e.target.value)}
           style={{ padding: '5px', width: '150px', height: '300px', fontSize: '12px', width: '90%' }}
           />
           </Typography>
-          <Typography>
-          {
-          sentimentScore !== null ?
-            <h9>Sentiment Score: {sentimentScore.score}</h9>
-            : ''
-          }
-
-          {
-          sentimentScore ?
-            sentimentScore.score === 0 ?
-              <h6>The candidate has a neutral stand on things. Preferred if required.</h6>
-              :
-              sentimentScore.score > 0 ?
-              <h6>The candidate has a positive stand on things and is preferred for the job.</h6>
-                :
-                <h6>The candidate has a negative stand on things and is not preferred for the job</h6>
-            : ''
-          }
-
-          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-      <button id='tbutton' style={{
-        border:'none',
-        transition: 'all 0.3s ease 0s',
-        cursor: 'pointer',
-        outline: 'none',
-        padding:'15px 15px',
-        textAlign:'center',
-        marginLeft:'250px',
-        color:'white',
-        backgroundColor: '#7b96ec'}} onClick={handleSubmit}>Complete Test</button>
+      <Button size="small"  
+        style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
+        variant="contained"
+        onClick={()=> (window.open('/'), window.close())}
+        >Submit Response</Button>
       </CardActions>
     </Card>
   );

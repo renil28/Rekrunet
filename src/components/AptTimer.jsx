@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Timer = ({ delayResend = "30" }) => {
+const Timer2 = ({ delayResend = "300" }) => {
   const [delay, setDelay] = useState(+delayResend);
   const navigate = useNavigate();
   const minutes = Math.floor(delay / 60);
@@ -14,7 +14,7 @@ const Timer = ({ delayResend = "30" }) => {
 
     if (delay === 0) {
       clearInterval(timer);
-      navigate("/testpage/apt");
+      navigate("/testpage/hr");
     }
 
     return () => {
@@ -33,4 +33,4 @@ const Timer = ({ delayResend = "30" }) => {
   );
 };
 
-export default Timer;
+export default Timer2;

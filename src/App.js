@@ -15,6 +15,7 @@ import EditQuestions from "./components/EditQuestions";
 import Dashboard from "./components/Dashboard";
 import CheckTests from "./components/CheckTests";
 import Notifications from "./components/Notifications";
+import HR from "./pages/HR";
 
 
 function App() {
@@ -51,7 +52,8 @@ function App() {
           <Route path="testpage" element={<TabSec/>}>
             <Route path="proceed" element={<Proceed />} />
             <Route path="test" element={<Test/>} />
-            <Route path="hr" element={<Sent/>} />
+            <Route path="apt" element={<Sent/>}/>
+            <Route path="hr" element={<HR/>} />
           </Route>
         </Route>
       </Routes>
