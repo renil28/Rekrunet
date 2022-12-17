@@ -49,7 +49,7 @@ function Copyright() {
 }
 
 
-function EditQuestions() {
+function Resume() {
   const {currentUser} = useContext(AuthContext)
 
   const theme = createTheme();
@@ -82,30 +82,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
   const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "questions");
+  const usersCollectionRef = collection(db, "resume");
 
   const createUser = async () => {
     await addDoc(usersCollectionRef, { name: newName, ans1: newAns, ans2: newAns2, ans3: newAns3, ans4: newAns4, rtAns: rightAns});
-  };
-
-  const updateUser = async (id) => {
-    const userDoc = doc(db, "questions", id);
-    await updateDoc(userDoc, {
-        name: newName,
-        ans1:newAns,
-        ans2:newAns2,
-        ans3:newAns3,
-        ans4:newAns4,
-        rtAns: rightAns
-      }
-    );
-  };
-
-
-
-  const deleteUser = async (id) => {
-    const userDoc = doc(db, "questions", id);
-    await deleteDoc(userDoc);
   };
 
   useEffect(() => {
@@ -121,14 +101,14 @@ const Item = styled(Paper)(({ theme }) => ({
   return (
     <ThemeProvider theme={theme}>
     <CssBaseline />
-    <AppBar style ={{background:'#757779'}}position="relative">
+    <AppBar position="relative">
       <Toolbar>
         <Typography variant="h6" color="inherit" noWrap>
           Rekrunet
         </Typography>
         <Avatar alt="user" src={currentUser.photoURL} sx={{marginLeft:140,  width: 50, height: 50 }} />
         <span style={{marginRight:15}}>{currentUser.displayName}</span>
-        <Button size="small" style={{backgroundColor: '#413F3F'}} variant="contained" onClick={()=>signOut(auth)}>Logout</Button>
+        <Button size="small" style={{backgroundColor: '#7b96ec'}} variant="contained" onClick={()=>signOut(auth)}>Logout</Button>
       </Toolbar>
     </AppBar>
     <div className="">
@@ -140,9 +120,9 @@ const Item = styled(Paper)(({ theme }) => ({
                 required
                 sx={{ m: 1, width: '30ch' }}
                 id="outlined-required"
-                label="Question"
+                label="Name"
                 onChange={(event) => {
-                    setNewName(event.target.value);
+                    setNewName(currentUser.displayName);
                 }}
                 />
                 <br></br>
@@ -207,151 +187,14 @@ const Item = styled(Paper)(({ theme }) => ({
                 style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
                 variant="contained"
                 onClick={()=> createUser()}
-                >Add Question</Button>
-                  <Button size="small"  
-                style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
-                variant="contained"
-                href="/aitool "
-                target="_blank"
-                >MCQ AI Tool</Button>
+                >Update Resume</Button>
                 </CardActions>
              </Card>
         </Grid>
-        <Grid item xs={8}>
-        {users.map((user) => {
-        return (
-         <div>   
-            <br></br>
-            <br></br>
-            <Card sx={{ maxWidth: 750}}>
-            <CardContent>
-            <Typography>
-            Question: {user.name}   
-            </Typography>
-            <Typography>
-            Answer 1: {user.ans1}
-            </Typography>
-            <Typography>
-            Answer 2: {user.ans2}
-            </Typography>
-            <Typography>
-            Answer 3: {user.ans3}
-            </Typography>
-            <Typography>
-            Answer 4: {user.ans4}
-            </Typography>
-            <Typography>
-            Correct Answer : {user.rtAns}
-            </Typography>
-      </CardContent>
-      <CardActions>
-      <div>
-      <Button size="small"  
-        style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
-        variant="contained"onClick={handleClickOpen}>
-        Update Question
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-            <DialogTitle id="alert-dialog-title">
-            {"Update the Question"}
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                <div>
-                    <Card sx={{ maxWidth: 550}}>
-                    <br></br>
-                    <TextField
-                        required
-                        id="outlined-required"
-                        label="Question"
-                        onChange={(event) => {
-                            setNewName(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 1"
-                        onChange={(event) => {
-                            setNewAns(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 2"
-                        onChange={(event) => {
-                            setNewAns2(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 3"
-                        onChange={(event) => {
-                            setNewAns3(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 4"
-                        onChange={(event) => {
-                            setNewAns4(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Correct Answer"
-                        onChange={(event) => {
-                            setrightAns(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                    </Card>
-                 </div>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={()=> {updateUser(user.id);}}>Update Values</Button>
-          <Button onClick={handleClose} autoFocus>
-            Exit
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-        <Button size="small"  
-        style={{ margin: '0 auto', marginRight:'400px'  ,backgroundColor: '#FF0000'}}
-        variant="contained"
-        onClick={()=> {deleteUser(user.id);} }
-        >Delete Question</Button>
-      </CardActions>
-    </Card>
-    <br></br>
-    </div>
-        );
-      })}
         </Grid>
-      </Grid>
-    </Box>
-    </div>
+        </Box>
+        </div>
+    
     <Box sx={{ bgcolor: 'background.paper', p: 6 }} style={{backgroundColor: '#757779'}} component="footer">
         <Typography
           variant="subtitle1"
@@ -368,4 +211,4 @@ const Item = styled(Paper)(({ theme }) => ({
   );
 }
 
-export default EditQuestions;
+export default Resume;

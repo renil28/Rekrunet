@@ -49,7 +49,7 @@ function Copyright() {
 }
 
 
-function EditQuestions() {
+function JobAdd() {
   const {currentUser} = useContext(AuthContext)
 
   const theme = createTheme();
@@ -73,30 +73,26 @@ const Item = styled(Paper)(({ theme }) => ({
       setOpen(false);
     };
 
-  const [newName, setNewName] = useState("");
-  const [newAns, setNewAns] = useState(0);
-  const [newAns2, setNewAns2] = useState(0);
-  const [newAns3, setNewAns3] = useState(0);
-  const [newAns4, setNewAns4] = useState(0);
-  const [rightAns, setrightAns] = useState(0);
+  const [jobName, setjobName] = useState("");
+  const [jobCode, setjobCode] = useState(0);
+  const [jobctc, setjobctc] = useState(0);
+  const [jobopen, setjobopen] = useState(0);
 
 
   const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "questions");
+  const usersCollectionRef = collection(db, "jobs");
 
   const createUser = async () => {
-    await addDoc(usersCollectionRef, { name: newName, ans1: newAns, ans2: newAns2, ans3: newAns3, ans4: newAns4, rtAns: rightAns});
+    await addDoc(usersCollectionRef, { name: jobName, code: jobCode, ctc: jobctc, openings: jobopen});
   };
 
   const updateUser = async (id) => {
-    const userDoc = doc(db, "questions", id);
+    const userDoc = doc(db, "jobs", id);
     await updateDoc(userDoc, {
-        name: newName,
-        ans1:newAns,
-        ans2:newAns2,
-        ans3:newAns3,
-        ans4:newAns4,
-        rtAns: rightAns
+        name: jobName, 
+        code: jobCode,
+        ctc: jobctc,
+        openings: jobopen
       }
     );
   };
@@ -104,7 +100,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
   const deleteUser = async (id) => {
-    const userDoc = doc(db, "questions", id);
+    const userDoc = doc(db, "jobs", id);
     await deleteDoc(userDoc);
   };
 
@@ -140,9 +136,9 @@ const Item = styled(Paper)(({ theme }) => ({
                 required
                 sx={{ m: 1, width: '30ch' }}
                 id="outlined-required"
-                label="Question"
+                label="Job Name"
                 onChange={(event) => {
-                    setNewName(event.target.value);
+                    setjobName(event.target.value);
                 }}
                 />
                 <br></br>
@@ -151,9 +147,9 @@ const Item = styled(Paper)(({ theme }) => ({
                 required
                 sx={{ m: 1, width: '30ch' }}
                 id="outlined-required"
-                label="Answer 1"
+                label="Job Code"
                 onChange={(event) => {
-                    setNewAns(event.target.value);
+                    setjobCode(event.target.value);
                 }}
                 />
                 <br></br>
@@ -162,9 +158,9 @@ const Item = styled(Paper)(({ theme }) => ({
                 required
                 sx={{ m: 1, width: '30ch' }}
                 id="outlined-required"
-                label="Answer 2"
+                label="Job CTC"
                 onChange={(event) => {
-                    setNewAns2(event.target.value);
+                    setjobctc(event.target.value);
                 }}
                 />
                 <br></br>
@@ -173,31 +169,9 @@ const Item = styled(Paper)(({ theme }) => ({
                 required
                 sx={{ m: 1, width: '30ch' }}
                 id="outlined-required"
-                label="Answer 3"
+                label="Job Openings"
                 onChange={(event) => {
-                    setNewAns3(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Answer 4 "
-                onChange={(event) => {
-                    setNewAns4(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Correct Answer"
-                onChange={(event) => {
-                    setrightAns(event.target.value);
+                    setjobopen(event.target.value);
                 }}
                 />
                 <br></br>
@@ -207,13 +181,7 @@ const Item = styled(Paper)(({ theme }) => ({
                 style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
                 variant="contained"
                 onClick={()=> createUser()}
-                >Add Question</Button>
-                  <Button size="small"  
-                style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
-                variant="contained"
-                href="/aitool "
-                target="_blank"
-                >MCQ AI Tool</Button>
+                >Add Job</Button>
                 </CardActions>
              </Card>
         </Grid>
@@ -226,22 +194,16 @@ const Item = styled(Paper)(({ theme }) => ({
             <Card sx={{ maxWidth: 750}}>
             <CardContent>
             <Typography>
-            Question: {user.name}   
+            Job Name: {user.name}   
             </Typography>
             <Typography>
-            Answer 1: {user.ans1}
+            Job Code: {user.code}
             </Typography>
             <Typography>
-            Answer 2: {user.ans2}
+            CTC: {user.ctc}
             </Typography>
             <Typography>
-            Answer 3: {user.ans3}
-            </Typography>
-            <Typography>
-            Answer 4: {user.ans4}
-            </Typography>
-            <Typography>
-            Correct Answer : {user.rtAns}
+            Openings: {user.openings}
             </Typography>
       </CardContent>
       <CardActions>
@@ -249,7 +211,7 @@ const Item = styled(Paper)(({ theme }) => ({
       <Button size="small"  
         style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
         variant="contained"onClick={handleClickOpen}>
-        Update Question
+        Update Job
       </Button>
       <Dialog
         open={open}
@@ -266,65 +228,47 @@ const Item = styled(Paper)(({ theme }) => ({
                     <Card sx={{ maxWidth: 550}}>
                     <br></br>
                     <TextField
-                        required
-                        id="outlined-required"
-                        label="Question"
-                        onChange={(event) => {
-                            setNewName(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 1"
-                        onChange={(event) => {
-                            setNewAns(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 2"
-                        onChange={(event) => {
-                            setNewAns2(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 3"
-                        onChange={(event) => {
-                            setNewAns3(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Answer 4"
-                        onChange={(event) => {
-                            setNewAns4(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
-                        <TextField
-                        required
-                        id="outlined-required"
-                        label="Correct Answer"
-                        onChange={(event) => {
-                            setrightAns(event.target.value);
-                        }}
-                        />
-                        <br></br>
-                        <br></br>
+                required
+                sx={{ m: 1, width: '30ch' }}
+                id="outlined-required"
+                label="Job Name"
+                onChange={(event) => {
+                    setjobName(event.target.value);
+                }}
+                />
+                <br></br>
+                <br></br>
+                <TextField
+                required
+                sx={{ m: 1, width: '30ch' }}
+                id="outlined-required"
+                label="Job Code"
+                onChange={(event) => {
+                    setjobCode(event.target.value);
+                }}
+                />
+                <br></br>
+                <br></br>
+                <TextField
+                required
+                sx={{ m: 1, width: '30ch' }}
+                id="outlined-required"
+                label="Job CTC"
+                onChange={(event) => {
+                    setjobctc(event.target.value);
+                }}
+                />
+                <br></br>
+                <br></br>
+                <TextField
+                required
+                sx={{ m: 1, width: '30ch' }}
+                id="outlined-required"
+                label="Job Openings"
+                onChange={(event) => {
+                    setjobopen(event.target.value);
+                }}
+                />
                     </Card>
                  </div>
           </DialogContentText>
@@ -341,7 +285,7 @@ const Item = styled(Paper)(({ theme }) => ({
         style={{ margin: '0 auto', marginRight:'400px'  ,backgroundColor: '#FF0000'}}
         variant="contained"
         onClick={()=> {deleteUser(user.id);} }
-        >Delete Question</Button>
+        >Delete Job</Button>
       </CardActions>
     </Card>
     <br></br>
@@ -368,4 +312,4 @@ const Item = styled(Paper)(({ theme }) => ({
   );
 }
 
-export default EditQuestions;
+export default JobAdd;

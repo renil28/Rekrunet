@@ -49,7 +49,7 @@ function Copyright() {
 }
 
 
-function EditQuestions() {
+function Candidates() {
   const {currentUser} = useContext(AuthContext)
 
   const theme = createTheme();
@@ -82,14 +82,14 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
   const [users, setUsers] = useState([]);
-  const usersCollectionRef = collection(db, "questions");
+  const usersCollectionRef = collection(db, "resume");
 
   const createUser = async () => {
     await addDoc(usersCollectionRef, { name: newName, ans1: newAns, ans2: newAns2, ans3: newAns3, ans4: newAns4, rtAns: rightAns});
   };
 
   const updateUser = async (id) => {
-    const userDoc = doc(db, "questions", id);
+    const userDoc = doc(db, "resume", id);
     await updateDoc(userDoc, {
         name: newName,
         ans1:newAns,
@@ -104,7 +104,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
   const deleteUser = async (id) => {
-    const userDoc = doc(db, "questions", id);
+    const userDoc = doc(db, "resume", id);
     await deleteDoc(userDoc);
   };
 
@@ -134,89 +134,6 @@ const Item = styled(Paper)(({ theme }) => ({
     <div className="">
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={1}>
-        <Grid item xs={4}>
-            <Card sx={{ maxWidth: 550 , marginTop: 5, marginLeft:10}}>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Question"
-                onChange={(event) => {
-                    setNewName(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Answer 1"
-                onChange={(event) => {
-                    setNewAns(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Answer 2"
-                onChange={(event) => {
-                    setNewAns2(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Answer 3"
-                onChange={(event) => {
-                    setNewAns3(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Answer 4 "
-                onChange={(event) => {
-                    setNewAns4(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <TextField
-                required
-                sx={{ m: 1, width: '30ch' }}
-                id="outlined-required"
-                label="Correct Answer"
-                onChange={(event) => {
-                    setrightAns(event.target.value);
-                }}
-                />
-                <br></br>
-                <br></br>
-                <CardActions>
-                <Button size="small"  
-                style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
-                variant="contained"
-                onClick={()=> createUser()}
-                >Add Question</Button>
-                  <Button size="small"  
-                style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
-                variant="contained"
-                href="/aitool "
-                target="_blank"
-                >MCQ AI Tool</Button>
-                </CardActions>
-             </Card>
-        </Grid>
         <Grid item xs={8}>
         {users.map((user) => {
         return (
@@ -249,7 +166,7 @@ const Item = styled(Paper)(({ theme }) => ({
       <Button size="small"  
         style={{margin: '0 auto', display: "flex", backgroundColor: '#7b96ec'}}
         variant="contained"onClick={handleClickOpen}>
-        Update Question
+        Update Candidate
       </Button>
       <Dialog
         open={open}
@@ -341,7 +258,7 @@ const Item = styled(Paper)(({ theme }) => ({
         style={{ margin: '0 auto', marginRight:'400px'  ,backgroundColor: '#FF0000'}}
         variant="contained"
         onClick={()=> {deleteUser(user.id);} }
-        >Delete Question</Button>
+        >Delete Candidate</Button>
       </CardActions>
     </Card>
     <br></br>
@@ -368,4 +285,4 @@ const Item = styled(Paper)(({ theme }) => ({
   );
 }
 
-export default EditQuestions;
+export default Candidates;

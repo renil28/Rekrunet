@@ -16,6 +16,14 @@ import Dashboard from "./components/Dashboard";
 import CheckTests from "./components/CheckTests";
 import Notifications from "./components/Notifications";
 import HR from "./pages/HR";
+import AdminLogin from "./pages/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
+import AddJobs from "./pages/AddJobs";
+import SetQuestions from "./pages/SetQuestions";
+import JobAdd from "./components/JobAdd";
+import Resume from "./components/Resume";
+import Candidates from "./components/Candidates";
+
 
 
 function App() {
@@ -46,9 +54,16 @@ function App() {
           <Route path="aitool" element={<AIQATool/>} />
           <Route path="help" element = {<Help/>}/>
           <Route path="questions" element = {<EditQuestions/>}/>
+          <Route path="admin" element ={<AdminLogin/>}/>
+          <Route path="dashboard2" element={<AdminDashboard/>}/>
+          <Route path="setquestions" element={<SetQuestions/>}/>
+          <Route path="addjobs" element={<AddJobs/>}/>
           <Route path="checktests" element = {<CheckTests/>}/>
           <Route path="notifications" element={<Notifications/>}/>
+          <Route path="jobadd" element={<JobAdd/>}/>
           <Route path="dashboard" element = {<Dashboard/>}/>
+          <Route path ="resume" element={<Resume/>}/>
+          <Route path="showcand" element={<Candidates/>}/>
           <Route path="testpage" element={<TabSec/>}>
             <Route path="proceed" element={<Proceed />} />
             <Route path="test" element={<Test/>} />
